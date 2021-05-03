@@ -33,8 +33,14 @@ def predict_model(
     return preds
 
 
-def model_eval(preds: np.ndarray, target: pd.Series, use_log_trick: bool = False) -> Dict[str, float]:
-    return dict(r2_score=r2_score(target, preds), rmse=mean_squared_error(target, preds, squared=False), mae=mean_absolute_error(target, preds))
+def eval_model(
+    preds: np.ndarray, target: pd.Series, use_log_trick: bool = False
+) -> Dict[str, float]:
+    return dict(
+        r2_score=r2_score(target, preds),
+        rmse=mean_squared_error(target, preds, squared=False),
+        mae=mean_absolute_error(target, preds),
+    )
 
 
 def serialize_model(model: TrainedModel, output: str) -> str:
