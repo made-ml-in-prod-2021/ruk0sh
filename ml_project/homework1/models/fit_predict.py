@@ -4,12 +4,12 @@ from typing import Union, Dict
 import numpy as np
 import pandas as pd
 from sklearn.metrics import r2_score, mean_squared_error, mean_absolute_error
-from catboost import CatBoostClassifier
+from catboost import CatBoostClassifier, CatBoostRegressor
 
 from homework1.entities.train_params import TrainParams
 from homework1.entities.feature_params import FeatureParams
 
-TrainedModel = Union[CatBoostClassifier]
+TrainedModel = Union[CatBoostClassifier, CatBoostRegressor]
 
 
 def train_model(
@@ -19,6 +19,8 @@ def train_model(
     feature_params: FeatureParams,
 ) -> TrainedModel:
     if train_params.model_type == "CatBoostClassifier":
+        model = CatBoostClassifier(random_state=train_params.random_state)
+    if train_params.model_type == "CatBoostRegressor":
         model = CatBoostClassifier(random_state=train_params.random_state)
     else:
         raise NotImplementedError()

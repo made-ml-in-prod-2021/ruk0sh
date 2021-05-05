@@ -6,7 +6,7 @@ from sklearn.compose import ColumnTransformer
 from sklearn.impute import SimpleImputer
 from sklearn.impute._base import _BaseImputer
 from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import OneHotEncoder, FunctionTransformer
+from sklearn.preprocessing import OneHotEncoder
 
 from homework1.entities.feature_params import FeatureParams
 from homework1.models.encoders import CustomLogTransformer
@@ -47,7 +47,7 @@ def cat_features_pipeline() -> Pipeline:
 
 def num_features_pipeline() -> Pipeline:
     imputer = get_numerical_imputer()
-    encoder = FunctionTransformer(np.log)  # TODO: use custom transformer
+    encoder = CustomLogTransformer()
     pipeline = Pipeline(
         [
             ("imputer", imputer),
