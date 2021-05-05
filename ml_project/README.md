@@ -38,8 +38,7 @@ pip install .
 ### Train
 
 ```bash
-python -m tools.train --config-name ./configs/config_lr.yml
-python -m tools.train --config-name ./configs/config_rf.yml
+python -m homework1.train
 ```
 
 
