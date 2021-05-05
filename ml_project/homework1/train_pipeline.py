@@ -12,9 +12,17 @@ from entities.train_pipeline_params import (
 from features.build_features import column_transformer, make_features
 from models.fit_predict import train_model, predict_model, eval_model, serialize_model
 
-logger = logging.getLogger(__name__)
-handler = logging.StreamHandler(sys.stdout)
-logger.addHandler(handler)
+logger = logging.getLogger("ml_project")
+logger.setLevel(logging.DEBUG)
+formatter = logging.Formatter("%(levelname)s: %(name)s [%(asctime)s] %(message)s")
+file_handler = logging.FileHandler(f"logs/train.log")
+file_handler.setLevel(logging.INFO)
+file_handler.setFormatter(formatter)
+stream_handler = logging.StreamHandler(sys.stdout)
+stream_handler.setLevel(logging.DEBUG)
+stream_handler.setFormatter(formatter)
+logger.addHandler(file_handler)
+logger.addHandler(stream_handler)
 
 
 def train_pipeline(train_pipeline_params: TrainPipelineParams):
