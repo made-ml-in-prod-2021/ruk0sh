@@ -9,7 +9,7 @@ from catboost import CatBoostClassifier, CatBoostRegressor
 from homework1.entities.train_params import TrainParams
 from homework1.entities.feature_params import FeatureParams
 
-TrainedModel = Union[CatBoostClassifier, CatBoostRegressor]
+ValidModelClass = Union[CatBoostClassifier, CatBoostRegressor]
 
 
 def train_model(
@@ -17,10 +17,10 @@ def train_model(
     target: pd.Series,
     train_params: TrainParams,
     feature_params: FeatureParams,
-) -> TrainedModel:
+) -> ValidModelClass:
     if train_params.model_type == "CatBoostClassifier":
         model = CatBoostClassifier(random_state=train_params.random_state)
-    if train_params.model_type == "CatBoostRegressor":
+    elif train_params.model_type == "CatBoostRegressor":
         model = CatBoostClassifier(random_state=train_params.random_state)
     else:
         raise NotImplementedError()
@@ -29,7 +29,7 @@ def train_model(
 
 
 def predict_model(
-    model: TrainedModel, features: pd.DataFrame, use_log_trick: bool = True
+    model: ValidModelClass, features: pd.DataFrame, use_log_trick: bool = True
 ) -> np.ndarray:
     preds = model.predict(features)
     return preds
@@ -45,7 +45,12 @@ def eval_model(
     )
 
 
-def serialize_model(model: TrainedModel, output: str) -> str:
+def serialize_model(model: ValidModelClass, output: str) -> str:
     with open(output, "wb") as f:
         pickle.dump(model, f)
     return output
+
+
+def deserialize_model(path: str) -> ValidModelClass:
+    with open(path, "rb") as f:
+        return pickle.load(f)

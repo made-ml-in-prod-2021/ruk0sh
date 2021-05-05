@@ -92,7 +92,7 @@ def train_pipeline(train_pipeline_params: TrainPipelineParams):
     return path_to_model, metrics
 
 
-@hydra.main(config_path="../configs", config_name="config.yaml")
+@hydra.main(config_path="../configs", config_name="train_config.yaml")
 def main(config: DictConfig) -> None:
     """
     Hydra wrapper for parsing CLI arguments
