@@ -1,13 +1,13 @@
 import pickle
-from typing import Union
+from typing import Union, Dict
 
 import numpy as np
 import pandas as pd
 from sklearn.metrics import r2_score, mean_squared_error, mean_absolute_error
 from catboost import CatBoostClassifier
 
-from ..entities.train_params import TrainParams
-from ..entities.feature_params import FeatureParams
+from entities.train_params import TrainParams
+from entities.feature_params import FeatureParams
 
 TrainedModel = Union[CatBoostClassifier]
 

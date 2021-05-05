@@ -1,14 +1,14 @@
 version: 1
-input_data_path: "data/raw/train.csv"
+input_data_path: "data/raw/heart.csv"
 output_model_path: "models/model.pkl"
-metric_path: "models/metrics.json"
-splitting_params:
+metrics_path: "models/metrics.json"
+split_params:
   val_size: 0.2
   random_state: 42
 train_params:
   model_type: "CatBoostClassifier"
 feature_params:
-  categorical_features:
+  cat_features:
     - "ca"
     - "cp"
     - "exang"
@@ -16,11 +16,11 @@ feature_params:
     - "restecg"
     - "sex"
     - "slope"
-  numerical_features:
+  num_features:
     - "age"
     - "chol"
     - "oldpeak"
     - "thalach"
     - "trestbps"
-  features_to_drop: []
+  drop_features: []
   target_col: "target"

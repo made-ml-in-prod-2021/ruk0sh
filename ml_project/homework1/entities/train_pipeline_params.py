@@ -3,15 +3,15 @@ from dataclasses import dataclass
 
 from marshmallow_dataclass import class_schema
 
-from .feature_params import FeatureParams
-from .train_params import TrainParams
-from .split_params import SplitParams
+from entities.feature_params import FeatureParams
+from entities.train_params import TrainParams
+from entities.split_params import SplitParams
 
 
 @dataclass()
 class TrainPipelineParams:
+    version: int
     input_data_path: str
-    output_data_path: str
     output_model_path: str
     metrics_path: str
     feature_params: FeatureParams

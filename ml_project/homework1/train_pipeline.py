@@ -4,13 +4,13 @@ import sys
 
 import click
 
-from .data.make_dataset import read_data, split_data
-from .entities.train_pipeline_params import (
+from data.make_dataset import read_data, split_data
+from entities.train_pipeline_params import (
     TrainPipelineParams,
     read_train_pipeline_params,
 )
-from .features.build_features import column_transformer, make_features
-from .models.fit_predict import train_model, predict_model, eval_model, serialize_model
+from features.build_features import column_transformer, make_features
+from models.fit_predict import train_model, predict_model, eval_model, serialize_model
 
 logger = logging.getLogger(__name__)
 handler = logging.StreamHandler(sys.stdout)
