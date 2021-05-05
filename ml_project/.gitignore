@@ -50,6 +50,9 @@ coverage.xml
 # Logs:
 logs/*.log
 
+# Hydra outputs
+outputs/**/
+
 # Sphinx documentation
 docs/_build/
 

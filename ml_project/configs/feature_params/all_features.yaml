@@ -1,0 +1,17 @@
+feature_params:
+  cat_features:
+    - "ca"
+    - "cp"
+    - "exang"
+    - "fbs"
+    - "restecg"
+    - "sex"
+    - "slope"
+  num_features:
+    - "age"
+    - "chol"
+    - "oldpeak"
+    - "thalach"
+    - "trestbps"
+  drop_features: []
+  target_col: "target"

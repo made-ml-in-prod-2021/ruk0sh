@@ -1,16 +1,24 @@
 import json
 import logging
 import sys
+import os
 
-import click
+import hydra
+from omegaconf import DictConfig, OmegaConf
 
-from data.make_dataset import read_data, split_data
-from entities.train_pipeline_params import (
+from homework1.data.make_dataset import read_data, split_data
+from homework1.entities.train_pipeline_params import (
     TrainPipelineParams,
+    TrainPipelineParamsSchema,
     read_train_pipeline_params,
 )
-from features.build_features import column_transformer, make_features
-from models.fit_predict import train_model, predict_model, eval_model, serialize_model
+from homework1.features.build_features import column_transformer, make_features
+from homework1.models.fit_predict import (
+    train_model,
+    predict_model,
+    eval_model,
+    serialize_model,
+)
 
 logger = logging.getLogger("ml_project")
 logger.setLevel(logging.DEBUG)
@@ -84,12 +92,18 @@ def train_pipeline(train_pipeline_params: TrainPipelineParams):
     return path_to_model, metrics
 
 
-@click.command(name="train_pipeline")
-@click.argument("config_path")
-def train_pipeline_command(config_path: str):
-    params = read_train_pipeline_params(config_path)
-    train_pipeline(params)
+@hydra.main(config_path="../configs", config_name="config.yaml")
+def main(config: DictConfig) -> None:
+    """
+    Hydra wrapper for parsing CLI arguments
+    :return: Nothing
+    """
+    os.chdir(hydra.utils.to_absolute_path("."))
+    schema = TrainPipelineParamsSchema()
+    logger.info(f"Train configurations is:\n{OmegaConf.to_yaml(config)}")
+    config = schema.load(config)
+    train_pipeline(config)
 
 
 if __name__ == "__main__":
-    train_pipeline_command()
+    main()

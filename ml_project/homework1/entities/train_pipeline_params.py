@@ -3,9 +3,9 @@ from dataclasses import dataclass
 
 from marshmallow_dataclass import class_schema
 
-from entities.feature_params import FeatureParams
-from entities.train_params import TrainParams
-from entities.split_params import SplitParams
+from homework1.entities.feature_params import FeatureParams
+from homework1.entities.train_params import TrainParams
+from homework1.entities.split_params import SplitParams
 
 
 @dataclass()

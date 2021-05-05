@@ -6,8 +6,8 @@ import pandas as pd
 from sklearn.metrics import r2_score, mean_squared_error, mean_absolute_error
 from catboost import CatBoostClassifier
 
-from entities.train_params import TrainParams
-from entities.feature_params import FeatureParams
+from homework1.entities.train_params import TrainParams
+from homework1.entities.feature_params import FeatureParams
 
 TrainedModel = Union[CatBoostClassifier]
 
@@ -22,7 +22,7 @@ def train_model(
         model = CatBoostClassifier(random_state=train_params.random_state)
     else:
         raise NotImplementedError()
-    model.fit(features, target)
+    model.fit(features, target, verbose=100)
     return model
 
 

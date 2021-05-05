@@ -8,8 +8,8 @@ from sklearn.impute._base import _BaseImputer
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, FunctionTransformer
 
-from entities.feature_params import FeatureParams
-from models.encoders import CustomLogTransformer
+from homework1.entities.feature_params import FeatureParams
+from homework1.models.encoders import CustomLogTransformer
 
 
 def get_imputer(strategy: str) -> _BaseImputer:
