@@ -22,7 +22,7 @@ def train_model(
         model = CatBoostClassifier(random_state=train_params.random_state)
     else:
         raise NotImplementedError()
-    model.fit(features, target, cat_features=feature_params.cat_features)
+    model.fit(features, target)
     return model
 
 

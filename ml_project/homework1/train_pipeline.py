@@ -30,16 +30,29 @@ def train_pipeline(train_pipeline_params: TrainPipelineParams):
     feature_transformer = column_transformer(train_pipeline_params.feature_params)
     feature_transformer.fit(train_df)
 
-    train_features, train_target = make_features()  # TODO: !
+    train_features, train_target = make_features(
+        feature_transformer,
+        train_df,
+        train_pipeline_params.feature_params,
+        test_mode=False,
+    )
     logger.info(
         f"Train features is {train_features.shape[0]} rows X {train_features.shape[1]} cols"
     )
 
     model = train_model(
-        train_features, train_target, train_pipeline_params.train_params
+        train_features,
+        train_target,
+        train_pipeline_params.train_params,
+        train_pipeline_params.feature_params,
     )
 
-    val_features, val_target = make_features()  # TODO: !
+    val_features, val_target = make_features(
+        feature_transformer,
+        val_df,
+        train_pipeline_params.feature_params,
+        test_mode=False,
+    )
     logger.info(
         f"Validation features is {val_features.shape[0]} rows X {val_features.shape[1]} cols"
     )
