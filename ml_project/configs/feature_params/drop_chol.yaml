@@ -7,6 +7,7 @@ feature_params:
     - "restecg"
     - "sex"
     - "slope"
+    - "thal"
   num_features:
     - "age"
     - "chol"
