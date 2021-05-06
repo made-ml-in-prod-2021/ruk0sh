@@ -1,5 +1,6 @@
 # Machine Learning in Production Course: Homework 1
-Maintainer [Ruslan Akhmerov](https://data.mail.ru/profile/r.akhmerov/)
+Maintainer: [Ruslan Akhmerov](https://data.mail.ru/profile/r.akhmerov/)
+Status: Under Construction
 
 ## Load data:
 
@@ -47,6 +48,12 @@ python -m homework1.train
 python -m homework1.predict
 ```
 
+### Generate Data Sample for Tests
+
+```bash
+python -m tests.datagen
+```
+
 ## Project Roadmap
 
 - [X] Назовите ветку homework1 (1 балл)
@@ -60,9 +67,9 @@ python -m homework1.predict
 - [X] Проект имеет модульную структуру (не все в одном файле) (2 баллов)
 - [X] использованы логгеры (2 балла)
 - [ ] написаны тесты на отдельные модули и на прогон всего пайплайна (3 баллов)
-- [ ] Для тестов генерируются синтетические данные, приближенные к реальным (3 баллов)
+- [X] Для тестов генерируются синтетические данные, приближенные к реальным (3 баллов)
   - ( ) можно посмотреть на библиотеки https://faker.readthedocs.io/en/, https://feature-forge.readthedocs.io/en/latest/
-  - ( ) можно просто руками посоздавать данных, собственноручно написанными функциями
+  - (X) можно просто руками посоздавать данных, собственноручно написанными функциями
   - ( ) как альтернатива, можно закоммитить файл с подмножеством трейна(это не оценивается)
 - [X] Обучение модели конфигурируется с помощью конфигов в json или yaml,
   закоммитьте как минимум 2 корректные конфигурации,

@@ -21,7 +21,7 @@ TARGET_COL = "target"
 @click.option("-m", "--mock", type=str, default="data/raw/heart.csv")
 @click.option("-s", "--size", type=int, default=1000)
 @click.option("-o", "--output", type=str, default="data/test_data/generated.csv")
-def generate(size: int, mock: str, output: str):
+def generate(size: int, mock: str, output: str, writefile: bool = True) -> pd.DataFrame:
     origin_df = pd.read_csv(mock)
     res_df = pd.DataFrame(index=range(size), columns=origin_df.columns)
     for colname, coldata in origin_df.iteritems():
@@ -33,7 +33,9 @@ def generate(size: int, mock: str, output: str):
             res_df[colname] = np.random.choice(coldata.unique(), size=size)
         else:
             raise ValueError(f"Unexpected column: {colname}")
-    res_df.to_csv(output)
+    if writefile:
+        res_df.to_csv(output)
+    return res_df
 
 
 if __name__ == "__main__":
