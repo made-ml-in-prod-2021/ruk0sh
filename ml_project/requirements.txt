@@ -2,7 +2,7 @@ click==7.1.2
 pandas==1.1.5
 numpy==1.19.5
 catboost==0.25.1
-hydra==2.5
+hydra-core==1.0.6
 marshmallow_dataclass==8.4.1
 omegaconf==2.0.6
 pytest==6.2.4
