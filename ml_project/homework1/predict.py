@@ -1,15 +1,16 @@
 import logging
-import sys
 import os
+import sys
 
-import pandas as pd
-import numpy as np
 import hydra
-from omegaconf import OmegaConf, DictConfig
+import numpy as np
+import pandas as pd
+from omegaconf import DictConfig, OmegaConf
 
-from homework1.features.build_features import make_features, column_transformer
+from homework1.entities.predict_pipeline_params import (PredictParams,
+                                                        PredictParamsSchema)
+from homework1.features.build_features import column_transformer, make_features
 from homework1.models.fit_predict import deserialize_model, predict_model
-from homework1.entities.predict_pipeline_params import PredictParams, PredictParamsSchema
 
 logger = logging.getLogger("ml_project")
 logger.setLevel(logging.DEBUG)

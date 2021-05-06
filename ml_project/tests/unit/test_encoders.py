@@ -1,10 +1,10 @@
-import pandas as pd
-import numpy as np
-import pytest
 from typing import Union
 
-from homework1.models.encoders import CustomLogTransformer
+import numpy as np
+import pandas as pd
+import pytest
 
+from homework1.models.encoders import CustomLogTransformer
 
 test_X = np.array([[11, 22, 33], [-1, -2, -3], [0.0, 0.0, 0.0]])
 expected_X = test_X.copy()

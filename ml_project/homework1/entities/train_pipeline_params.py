@@ -1,11 +1,11 @@
-import yaml
 from dataclasses import dataclass
 
+import yaml
 from marshmallow_dataclass import class_schema
 
 from homework1.entities.feature_params import FeatureParams
-from homework1.entities.train_params import TrainParams
 from homework1.entities.split_params import SplitParams
+from homework1.entities.train_params import TrainParams
 
 
 @dataclass()

@@ -1,5 +1,6 @@
-import yaml
 from dataclasses import dataclass, field
+
+import yaml
 from marshmallow_dataclass import class_schema
 
 from homework1.entities.feature_params import FeatureParams

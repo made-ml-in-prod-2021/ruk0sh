@@ -6,13 +6,12 @@ import yaml
 from catboost import CatBoostClassifier, CatBoostRegressor
 from sklearn.compose import ColumnTransformer
 
-from tests.datagen import CAT_FEATURES, NUM_FEATURES, TARGET_COL, generate
 from homework1.entities.feature_params import FeatureParams
-from homework1.entities.train_params import TrainParams
-from homework1.entities.split_params import SplitParams
-from homework1.entities.train_pipeline_params import TrainPipelineParams
 from homework1.entities.predict_pipeline_params import PredictParams
-
+from homework1.entities.split_params import SplitParams
+from homework1.entities.train_params import TrainParams
+from homework1.entities.train_pipeline_params import TrainPipelineParams
+from tests.datagen import CAT_FEATURES, NUM_FEATURES, TARGET_COL, generate
 
 RAW_DATA_PATH = "data/raw/heart.csv"
 TEST_DATA_PATH = "data/test_data/generated.csv"

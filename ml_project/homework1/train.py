@@ -1,24 +1,17 @@
 import json
 import logging
-import sys
 import os
+import sys
 
 import hydra
 from omegaconf import DictConfig, OmegaConf
 
 from homework1.data.make_dataset import read_data, split_data
 from homework1.entities.train_pipeline_params import (
-    TrainPipelineParams,
-    TrainPipelineParamsSchema,
-    read_train_pipeline_params,
-)
+    TrainPipelineParams, TrainPipelineParamsSchema, read_train_pipeline_params)
 from homework1.features.build_features import column_transformer, make_features
-from homework1.models.fit_predict import (
-    train_model,
-    predict_model,
-    eval_model,
-    serialize_model,
-)
+from homework1.models.fit_predict import (eval_model, predict_model,
+                                          serialize_model, train_model)
 
 logger = logging.getLogger("ml_project")
 logger.setLevel(logging.DEBUG)
