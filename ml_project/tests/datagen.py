@@ -17,10 +17,26 @@ TARGET_COL = "target"
 
 
 @click.command()
-@click.option("-m", "--mock", type=str, default="data/raw/heart.csv")
-@click.option("-s", "--size", type=int, default=1000)
-@click.option("-o", "--output", type=str, default="data/test_data/generated.csv")
-def generate_cli(size: int, mock: str, output: str, writefile: bool = True) -> pd.DataFrame:
+@click.option(
+    "-m",
+    "--mock",
+    type=str,
+    default="data/raw/heart.csv",
+    help="path to real .csv file to mock it",
+)
+@click.option(
+    "-s", "--size", type=int, default=1000, help="number of rows in mocked data"
+)
+@click.option(
+    "-o",
+    "--output",
+    type=str,
+    default="data/test_data/generated.csv",
+    help="output path",
+)
+def generate_cli(
+    size: int, mock: str, output: str, writefile: bool = True
+) -> pd.DataFrame:
     generate(size=size, mock=mock, output=output, writefile=writefile)
 
 

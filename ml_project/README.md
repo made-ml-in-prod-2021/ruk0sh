@@ -35,30 +35,42 @@ pip install -r requirements.txt
 
 ```bash
 pip install .
+pip uninstall homework1
 ```
 
 ### Fit Model
-
+Managed by `./configs/train_config.yaml`
+Used: Hydra Configs
 ```bash
-python -m homework1.train
+python -m homework1.train  # Should work fine
+python -m homework1.train [ input_data_path=path/to/data.csv ] [ another_config_option=value ]
 ```
 
 ### Make Predictions
-
+Managed by `./configs/predict_config.yaml`
+Used: Hydra Configs
 ```bash
-python -m homework1.predict
+python -m homework1.predict  # Should work fine
+python -m homework1.predict  [ raw_data_path=path/to/raw/data.csv ] [ etc. ]
 ```
 
 ### Generate Fake Trainable Data Sample
-
+Works fine with default options. Used: Click CLI
 ```bash
-python -m tests.datagen
+python -m tests.datagen [OPTIONS]
+```
+```
+Options:
+  -m, --mock TEXT     path to real .csv file to mock it
+  -s, --size INTEGER  number of rows in mocked data
+  -o, --output TEXT   output path
+  --help              Show this message and exit.
 ```
 
 ## Tests
 
 ```bash
-pip install pytest, pytest-cov
+pip install pytest pytest-cov
 python -m pytest . -v --cov
 ```
 
