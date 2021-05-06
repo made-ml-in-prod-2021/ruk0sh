@@ -48,10 +48,17 @@ python -m homework1.train
 python -m homework1.predict
 ```
 
-### Generate Data Sample for Tests
+### Generate Fake Trainable Data Sample
 
 ```bash
 python -m tests.datagen
+```
+
+## Tests
+
+```bash
+pip install pytest, pytest-cov
+python -m pytest . -v --cov
 ```
 
 ## Project Roadmap
@@ -67,6 +74,8 @@ python -m tests.datagen
 - [X] Проект имеет модульную структуру (не все в одном файле) (2 баллов)
 - [X] использованы логгеры (2 балла)
 - [ ] написаны тесты на отдельные модули и на прогон всего пайплайна (3 баллов)
+  - [ ] юнит тесты
+  - [X] end2end тесты
 - [X] Для тестов генерируются синтетические данные, приближенные к реальным (3 баллов)
   - ( ) можно посмотреть на библиотеки https://faker.readthedocs.io/en/, https://feature-forge.readthedocs.io/en/latest/
   - (X) можно просто руками посоздавать данных, собственноручно написанными функциями
