@@ -14,6 +14,15 @@ from homework1.entities.train_pipeline_params import TrainPipelineParams
 from homework1.entities.predict_pipeline_params import PredictParams
 
 
+RAW_DATA_PATH = "data/raw/heart.csv"
+TEST_DATA_PATH = "data/test_data/generated.csv"
+TEST_METRICS_PATH = "data/test_data/metrics.json"
+TEST_MODEL_PATH = "data/test_data/model.pkl"
+TEST_PREDICTIONS_PATH = "data/test_data/preds.csv"
+TEST_YAML_VERSION_VALUE = 1
+TEST_DATA_DEFAULT_SIZE = 100
+
+
 @pytest.fixture
 def feature_df():
     df = pd.DataFrame([[11, 22, 33], [-1, -2, -3], [0.0, 0.0, 0.0]])
@@ -46,7 +55,12 @@ def transformer():
 
 @pytest.fixture
 def mock_dataset():
-    data = generate(size=100, writefile=False)
+    data = generate(
+        size=TEST_DATA_DEFAULT_SIZE,
+        writefile=False,
+        mock=RAW_DATA_PATH,
+        output=TEST_DATA_PATH,
+    )
     return data
 
 
@@ -119,10 +133,10 @@ def train_pipeline_params_fixture(
         feature_params=feature_params_fixture,
         split_params=split_params_fixture,
         train_params=train_params_fixture,
-        input_data_path="data/test_data/generated.csv",
-        metrics_path="data/test_data/metrics.json",
-        version=1,
-        output_model_path="data/test_data/model.pkl",
+        input_data_path=TEST_DATA_PATH,
+        metrics_path=TEST_METRICS_PATH,
+        version=TEST_YAML_VERSION_VALUE,
+        output_model_path=TEST_MODEL_PATH,
     )
     return params
 
@@ -131,10 +145,10 @@ def train_pipeline_params_fixture(
 def predict_pipeline_params_fixture(feature_params_fixture):
     params = PredictParams(
         version=1,
-        model_path="data/test_data/model.pkl",
-        raw_data_path="data/test_data/generated.csv",
-        proceed_data_path="data/test_data/preds.csv",
-        metrics_path="data/test_data/metrics.json",
+        model_path=TEST_MODEL_PATH,
+        raw_data_path=TEST_DATA_PATH,
+        proceed_data_path=TEST_PREDICTIONS_PATH,
+        metrics_path=TEST_METRICS_PATH,
         feature_params=feature_params_fixture,
     )
     return params

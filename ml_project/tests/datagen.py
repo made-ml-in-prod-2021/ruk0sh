@@ -21,6 +21,10 @@ TARGET_COL = "target"
 @click.option("-m", "--mock", type=str, default="data/raw/heart.csv")
 @click.option("-s", "--size", type=int, default=1000)
 @click.option("-o", "--output", type=str, default="data/test_data/generated.csv")
+def generate_cli(size: int, mock: str, output: str, writefile: bool = True) -> pd.DataFrame:
+    generate(size=size, mock=mock, output=output, writefile=writefile)
+
+
 def generate(size: int, mock: str, output: str, writefile: bool = True) -> pd.DataFrame:
     origin_df = pd.read_csv(mock)
     res_df = pd.DataFrame(index=range(size), columns=origin_df.columns)
@@ -38,5 +42,6 @@ def generate(size: int, mock: str, output: str, writefile: bool = True) -> pd.Da
     return res_df
 
 
+
 if __name__ == "__main__":
-    generate()
+    generate_cli()
