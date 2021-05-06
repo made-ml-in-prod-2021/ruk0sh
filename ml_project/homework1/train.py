@@ -8,7 +8,7 @@ from omegaconf import DictConfig, OmegaConf
 
 from homework1.data.make_dataset import read_data, split_data
 from homework1.entities.train_pipeline_params import (
-    TrainPipelineParams, TrainPipelineParamsSchema, read_train_pipeline_params)
+    TrainPipelineParams, TrainPipelineParamsSchema)
 from homework1.features.build_features import column_transformer, make_features
 from homework1.models.fit_predict import (eval_model, predict_model,
                                           serialize_model, train_model)
@@ -16,7 +16,7 @@ from homework1.models.fit_predict import (eval_model, predict_model,
 logger = logging.getLogger("ml_project")
 logger.setLevel(logging.DEBUG)
 formatter = logging.Formatter("%(levelname)s: %(name)s [%(asctime)s] %(message)s")
-file_handler = logging.FileHandler(f"logs/train.log")
+file_handler = logging.FileHandler("logs/train.log")
 file_handler.setLevel(logging.INFO)
 file_handler.setFormatter(formatter)
 stream_handler = logging.StreamHandler(sys.stdout)

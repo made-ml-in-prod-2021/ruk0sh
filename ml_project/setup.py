@@ -7,5 +7,5 @@ setup(
     description='Example ML project made at ML in Production Course held at MADE Big Data Academy',
     author='Ruslan Akhmerov',
     license='MIT',
-    #TODO: install_requires=requirements,
+    # TODO: install_requires=requirements,
 )

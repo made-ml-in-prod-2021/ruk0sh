@@ -47,7 +47,7 @@ coverage.xml
 *.mo
 *.pot
 
-# Cokkiecutter Docs
+# Docs
 docs/
 
 # Logs
@@ -55,9 +55,6 @@ logs/*.log
 
 # Hydra outputs
 outputs/**/
-
-# Sphinx documentation
-docs/_build/
 
 # PyBuilder
 target/

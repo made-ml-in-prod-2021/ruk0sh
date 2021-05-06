@@ -41,6 +41,5 @@ def generate(size: int, mock: str, output: str, writefile: bool = True) -> pd.Da
     return res_df
 
 
-
 if __name__ == "__main__":
     generate_cli()

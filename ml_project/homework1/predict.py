@@ -3,7 +3,6 @@ import os
 import sys
 
 import hydra
-import numpy as np
 import pandas as pd
 from omegaconf import DictConfig, OmegaConf
 
@@ -15,7 +14,7 @@ from homework1.models.fit_predict import deserialize_model, predict_model
 logger = logging.getLogger("ml_project")
 logger.setLevel(logging.DEBUG)
 formatter = logging.Formatter("%(levelname)s: %(name)s [%(asctime)s] %(message)s")
-file_handler = logging.FileHandler(f"logs/predict.log")
+file_handler = logging.FileHandler("logs/predict.log")
 file_handler.setLevel(logging.INFO)
 file_handler.setFormatter(formatter)
 stream_handler = logging.StreamHandler(sys.stdout)
