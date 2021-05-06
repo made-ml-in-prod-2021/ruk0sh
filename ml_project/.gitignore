@@ -47,7 +47,10 @@ coverage.xml
 *.mo
 *.pot
 
-# Logs:
+# Cokkiecutter Docs
+docs/
+
+# Logs
 logs/*.log
 
 # Hydra outputs
