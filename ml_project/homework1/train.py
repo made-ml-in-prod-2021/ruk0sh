@@ -66,15 +66,9 @@ def train_pipeline(train_pipeline_params: TrainPipelineParams):
         f"Validation features is {val_features.shape[0]} rows X {val_features.shape[1]} cols"
     )
 
-    predictions = predict_model(
-        model, val_features, train_pipeline_params.feature_params.use_log_trick
-    )
+    predictions = predict_model(model, val_features)
 
-    metrics = eval_model(
-        predictions,
-        val_target,
-        use_log_trick=train_pipeline_params.feature_params.use_log_trick,
-    )
+    metrics = eval_model(predictions, val_target)
 
     with open(train_pipeline_params.metrics_path, "w") as metric_file:
         json.dump(metrics, metric_file)

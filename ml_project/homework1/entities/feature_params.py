@@ -8,4 +8,3 @@ class FeatureParams:
     num_features: List[str]
     drop_features: List[str]
     target_col: Optional[str]
-    use_log_trick: bool = field(default=True)  # TODO: WAT?

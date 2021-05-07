@@ -1,7 +1,7 @@
 # Machine Learning in Production Course: Homework 1
 Maintainer: [Ruslan Akhmerov](https://data.mail.ru/profile/r.akhmerov/)
 
-Status: Under Construction
+Status: 95% ready for PR
 
 ## Load data:
 

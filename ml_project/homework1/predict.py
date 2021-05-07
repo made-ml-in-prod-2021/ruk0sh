@@ -51,9 +51,7 @@ def predict_pipeline(predict_pipeline_params: PredictParams) -> None:
     logger.info(f"Features shape is {features.shape}")
 
     logger.info("Making predictions...")
-    predictions = predict_model(
-        model, features, predict_pipeline_params.feature_params.use_log_trick
-    )
+    predictions = predict_model(model, features)
     logger.info(f"Predictions shape is {predictions.shape}")
 
     data["predictions"] = predictions
