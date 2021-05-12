@@ -53,7 +53,6 @@ def train_pipeline(train_pipeline_params: TrainPipelineParams):
         train_features,
         train_target,
         train_pipeline_params.train_params,
-        train_pipeline_params.feature_params,
     )
 
     val_features, val_target = make_features(
