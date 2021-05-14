@@ -1,0 +1,8 @@
+version: 1
+raw_data_path: "data/raw/heart.csv"
+proceed_data_path: "data/processed/preds.csv"
+model_path: "models/model.pkl"
+metrics_path: "models/metrics.json"
+threshold: 0.5
+defaults:
+  - feature_params: all_features
