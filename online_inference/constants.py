@@ -27,7 +27,7 @@ FEATURE_RANGES = [
     ("ca", [0, 4]),
     ("thal", [0, 3]),
 ]
-NUM_FEATURES = len(FEATURES)
+NUM_FEATURES = len(FEATURE_RANGES)
 FEATURES = [feature for feature, range in FEATURE_RANGES]
 
 # Errors and status codes
@@ -58,6 +58,7 @@ class DataSample(BaseModel):
                 if not (feature_range[0] <= value <= feature_range[1]):
                     raise ValueError(ERROR_CAT_FEATURE_OUT_OF_RANGE)
         return data
+
 
 class ModelResponse(BaseModel):
     id: str
