@@ -5,9 +5,18 @@ from typing import List, Optional, Union
 import pandas as pd
 import uvicorn
 from fastapi import FastAPI
+from fastapi.encoders import jsonable_encoder
+from fastapi.exceptions import RequestValidationError
+from fastapi.responses import JSONResponse
 
-from constants import PATH_TO_MODEL, LANDING_MESSAGE, ModelResponse, DataSample
-from ml_project.homework1.models.fit_predict import (
+from constants import (
+    PATH_TO_MODEL,
+    LANDING_MESSAGE,
+    ModelResponse,
+    DataSample,
+    STATUS_CODE_DATA_VALIDATION_FAILED,
+)
+from homework1.models.fit_predict import (
     deserialize_model,
     predict_model,
     ValidModelClass,
@@ -24,11 +33,16 @@ def make_predict(
 ) -> List[ModelResponse]:
     df = pd.DataFrame(data=data, columns=features)
     preds = predict_model(model=model, features=df)
-    resp = [
-        ModelResponse(id=idx, proba=proba)
-        for idx, proba in zip(df.index, preds)
-    ]
+    resp = [ModelResponse(id=idx, proba=proba) for idx, proba in zip(df.index, preds)]
     return resp
+
+
+@app.exception_handler(RequestValidationError)
+async def validation_exception_handler(request, exc):
+    return JSONResponse(
+        status_code=STATUS_CODE_DATA_VALIDATION_FAILED,
+        content=jsonable_encoder({"detail": exc.errors(), "body": exc.body}),
+    )
 
 
 @app.get("/")
