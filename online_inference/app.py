@@ -6,8 +6,8 @@ import pandas as pd
 import uvicorn
 from fastapi import FastAPI
 
-from .constants import PATH_TO_MODEL, LANDING_MESSAGE, ModelResponse, DataSample
-from homework1.models.fit_predict import (
+from constants import PATH_TO_MODEL, LANDING_MESSAGE, ModelResponse, DataSample
+from ml_project.homework1.models.fit_predict import (
     deserialize_model,
     predict_model,
     ValidModelClass,
@@ -24,7 +24,10 @@ def make_predict(
 ) -> List[ModelResponse]:
     df = pd.DataFrame(data=data, columns=features)
     preds = predict_model(model=model, features=df)
-    resp = [ModelResponse(id=idx, proba=proba) for idx, proba in zip(df.index, preds)]
+    resp = [
+        ModelResponse(id=idx, proba=proba)
+        for idx, proba in zip(df.index, preds)
+    ]
     return resp
 
 
@@ -53,8 +56,13 @@ def preload_model():
 
 
 @app.get("/predict")
-def predict():
+def predict(request: DataSample):
     logger.info("Got prediction query")
+    logger.info(f"data: {request.data}")
+    logger.info(f"features: {request.features}")
+    logger.info(f"model: {model}")
+    resp = make_predict(request.data, request.features, model)
+    return resp
 
 
 if __name__ == "__main__":

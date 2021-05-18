@@ -3,7 +3,7 @@ from typing import Union
 from pydantic import BaseModel, conlist, validator
 
 
-PATH_TO_MODEL = "model.pkl"
+PATH_TO_MODEL = "online_inference/model.pkl"
 LANDING_MESSAGE = """
 This is a entry point of our demo REST API\n
 Other available routes are:\n
