@@ -1,12 +1,12 @@
-FROM python:3.9
+FROM python:3.9-slim
 
-COPY requirements.txt .
-COPY model.pkl .
-COPY app.py .
-COPY constants.py .
+COPY requirements.txt model.pkl app.py constants.py ./
 
-RUN pip install -r requirements.txt
-RUN pip install "git+https://github.com/made-ml-in-prod-2021/ruk0sh@homework1#egg=homework1&subdirectory=ml_project"
+RUN apt-get update \
+    && apt-get install -y git \
+    && apt-get clean \
+    && pip install --no-cache-dir -r requirements.txt \
+    && pip install --no-cache-dir "git+https://github.com/made-ml-in-prod-2021/ruk0sh@homework1#egg=homework1&subdirectory=ml_project"
 
 WORKDIR .
 
