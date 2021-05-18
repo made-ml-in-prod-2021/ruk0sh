@@ -1,10 +1,12 @@
 FROM python:3.9
 
-COPY requirements.txt ./requirements.txt
-RUN pip install -r requirements.txt
+COPY requirements.txt .
+COPY model.pkl .
+COPY app.py .
+COPY constants.py .
 
-COPY model.pkl /model.pkl
-COPY app.py /app.py
+RUN pip install -r requirements.txt
+RUN pip install "git+https://github.com/made-ml-in-prod-2021/ruk0sh@homework1#egg=homework1&subdirectory=ml_project"
 
 WORKDIR .
 
