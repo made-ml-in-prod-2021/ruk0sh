@@ -63,7 +63,7 @@ def preload_model():
     model_path = os.getenv("PATH_TO_MODEL", PATH_TO_MODEL)
     logger.info(f"Loading model from {model_path}")
     if model_path is None:
-        error_message = f"PATH_TO_MODEL is not specified or is None"
+        error_message = "PATH_TO_MODEL is not specified or is None"
         logger.error(error_message)
         raise FileNotFoundError(error_message)
     model = deserialize_model(model_path)
