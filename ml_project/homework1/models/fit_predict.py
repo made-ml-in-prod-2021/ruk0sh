@@ -6,7 +6,7 @@ import pandas as pd
 from catboost import CatBoostClassifier, CatBoostRegressor
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
-from homework1.entities.train_params import TrainParams
+from ..entities.train_params import TrainParams
 
 ValidModelClass = Union[CatBoostClassifier, CatBoostRegressor]
 
