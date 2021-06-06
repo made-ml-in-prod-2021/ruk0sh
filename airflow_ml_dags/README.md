@@ -3,6 +3,22 @@ Maintainer: [Ruslan Akhmerov](https://data.mail.ru/profile/r.akhmerov/)
 
 Status: In Progress
 
+## Configure
+Airflow parameters can be found in `dags/constnts.py`
+
+## Run Airflow
+From directory with `docker-compose.yml`:
+```bash
+docker-compose up --build
+```
+
+## Stop Airflow
+```bash
+docker-compose down
+docker system prune  # yes
+docker volume prune  # yes
+docker network prune  # yes
+```
 
 ## Project Roadmap
 - [X] Поднимите airflow локально, используя docker compose (можно использовать из примера https://github.com/made-ml-in-prod-2021/airflow-examples/)
@@ -16,12 +32,12 @@ Status: In Progress
     - [ ] принимает на вход данные из пункта 1 (data.csv)
     - [ ] считывает путь до модельки из airflow variables(идея в том, что когда нам нравится другая модель и мы хотим ее на прод 
     - [ ] делает предсказание и записывает их в /data/predictions/{{ds }}/predictions.csv
-- [ ] Реализуйте сенсоры на то, что данные готовы для дагов тренировки и обучения (3 доп балла)
-- [ ] вы можете выбрать 2 пути для выполнения ДЗ. 
+- [X] Реализуйте сенсоры на то, что данные готовы для дагов тренировки и обучения (3 доп балла)
+- [X] вы можете выбрать 2 пути для выполнения ДЗ. 
     - [ ] поставить все необходимые пакеты в образ с airflow и использовать bash operator, python operator (0 баллов)
-    - [ ] использовать DockerOperator, тогда выполнение каждой из тасок должно запускаться в собственном контейнере
+    - [X] использовать DockerOperator, тогда выполнение каждой из тасок должно запускаться в собственном контейнере
         - [X] 1 из дагов реализован с помощью DockerOperator (5 баллов)
-        - [ ] все даги реализованы только с помощью DockerOperator (10 баллов) (пример https://github.com/made-ml-in-prod-2021/airflow-examples/blob/main/dags/11_docker.py).
+        - [X] все даги реализованы только с помощью DockerOperator (10 баллов) (пример https://github.com/made-ml-in-prod-2021/airflow-examples/blob/main/dags/11_docker.py).
     По технике, вы можете использовать такую же структуру как в примере, пакую в разные докеры скрипты, можете использовать общий докер с вашим пакетом, но с разными точками входа для разных тасок. 
     Прикольно, если вы покажете, что для разных тасок можно использовать разный набор зависимостей.
     https://github.com/made-ml-in-prod-2021/airflow-examples/blob/main/dags/11_docker.py#L27 в этом месте пробрасывается путь с хостовой машины, используйте здесь путь типа /tmp или считывайте из переменных окружения.
