@@ -25,7 +25,7 @@ def validate(data_dir: str, model_dir: str):
     metrics = dict(Accuracy=acc, F1_Score=f1)
     os.makedirs(model_dir, exist_ok=True)
     with open(os.path.join(model_dir, "metrics.json"), "w") as output_file:
-        json.dump(model, output_file)
+        json.dump(metrics, output_file)
 
 
 if __name__ == '__main__':

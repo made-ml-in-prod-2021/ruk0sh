@@ -16,7 +16,8 @@ def predict(input_dir: str, output_dir: str, model_dir: str):
         model = pickle.load(input_file)
     with open(os.path.join(model_dir, "scaler.pkl"), "rb") as input_file:
         scaler = pickle.load(input_file)
-    preds = model.predict(scaler.transform(data)).astype(np.int)
+
+    preds = model.predict(scaler.transform(data.values)).astype(np.int)
     os.makedirs(output_dir, exist_ok=True)
     np.savetxt(os.path.join(output_dir, "prediction.csv"), preds)
 

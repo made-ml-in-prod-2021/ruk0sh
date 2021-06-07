@@ -54,7 +54,7 @@ with DAG(
         image="airflow-predict",
         command= \
             f"--input-dir={DATA_RAW_DIR} "
-            f"--output-dir={DATA_PREDICTIONS_DIR}"
+            f"--output-dir={DATA_PREDICTIONS_DIR} "
             f"--model-dir={DATA_MODEL_DIR}",
         network_mode="bridge",
         task_id="predict",
