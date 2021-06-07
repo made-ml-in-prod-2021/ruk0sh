@@ -22,20 +22,22 @@ with DAG(
 
     features_sensor = FileSensor(
         task_id="features-sensor",
-        filepath=f"{AIRFLOW_BASE_DIR}{DATA_RAW_DIR}/target.csv",
+        filepath=f"{DATA_RAW_DIR}/data.csv",
         timeout=60 * 10,
         poke_interval=10,
         retries=50,
         mode="reschedule",
+        fs_conn_id="fs_default",
     )
 
     target_sensor = FileSensor(
         task_id="target-sensor",
-        filepath=f"{AIRFLOW_BASE_DIR}{DATA_RAW_DIR}/target.csv",
+        filepath=f"{DATA_RAW_DIR}/target.csv",
         timeout=60 * 10,
         poke_interval=10,
         retries=50,
         mode="reschedule",
+        fs_conn_id="fs_default",
     )
 
     preprocess_data = DockerOperator(
@@ -46,7 +48,7 @@ with DAG(
         network_mode="bridge",
         task_id="preprocess-data",
         do_xcom_push=False,
-        volumes=[f"{LOCAL_FS_DATA_DIR}:/data"],
+        volumes=[f"{LOCAL_FS_DATA_DIR}/:/data"],
     )
 
     [features_sensor, target_sensor] >> preprocess_data
