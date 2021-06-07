@@ -44,7 +44,8 @@ with DAG(
         image="airflow-preprocess",
         command=\
             f"--input-dir={DATA_RAW_DIR} "
-            f"--output-dir={DATA_PROCESSED_DIR}",
+            f"--output-dir={DATA_PROCESSED_DIR}"
+            f"--model-dir={DATA_MODEL_DIR}",
         network_mode="bridge",
         task_id="preprocess-data",
         do_xcom_push=False,
