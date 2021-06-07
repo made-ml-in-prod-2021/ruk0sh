@@ -51,4 +51,15 @@ with DAG(
         volumes=[f"{LOCAL_FS_DATA_DIR}/:/data"],
     )
 
-    [features_sensor, target_sensor] >> preprocess_data
+    split_data = DockerOperator(
+        image="airflow-split",
+        command= \
+            f"--input-dir={DATA_PROCESSED_DIR} "
+            f"--output-dir={DATA_PROCESSED_DIR}",
+        network_mode="bridge",
+        task_id="split-data",
+        do_xcom_push=False,
+        volumes=[f"{LOCAL_FS_DATA_DIR}/:/data"],
+    )
+
+    [features_sensor, target_sensor] >> preprocess_data >> split_data
