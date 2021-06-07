@@ -15,7 +15,7 @@ def validate(data_dir: str, model_dir: str):
     val = pd.read_csv(os.path.join(data_dir, "val.csv"), index_col=0)
     X_val = val.drop("target", axis=1).values
     y_val = val["target"].values
-    with open(os.path.join(model_dir), "rb") as input_file:
+    with open(os.path.join(model_dir, "model.pkl"), "rb") as input_file:
         model = pickle.load(input_file)
     # Get metrics
     preds = model.predict(X_val)
