@@ -12,9 +12,9 @@ from sklearn.preprocessing import StandardScaler
 @click.option("--model-dir")
 def preprocess(input_dir: str, output_dir: str, model_dir: str):
     # Load data from local filesystem
-    features = pd.read_csv(os.path.join(input_dir, "data.csv"))
+    features = pd.read_csv(os.path.join(input_dir, "data.csv"), index_col=0)
     feature_cols = features.columns
-    target = pd.read_csv(os.path.join(input_dir, "target.csv"))
+    target = pd.read_csv(os.path.join(input_dir, "target.csv"), index_col=0)
     # Standardize features
     scaler = StandardScaler()
     features = pd.DataFrame(scaler.fit_transform(features))
