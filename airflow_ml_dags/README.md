@@ -1,20 +1,22 @@
 # Machine Learning in Production Course: Homework 3
 Maintainer: [Ruslan Akhmerov](https://data.mail.ru/profile/r.akhmerov/)
 
-Status: In Progress
+Status: 99.9% ready for PR 😅
 
 ## Configure
-Airflow parameters can be found in `dags/constants.py`
+Airflow parameters can be found and changed in `dags/constants.py`
 
 ## Run Airflow
 From directory with `docker-compose.yml`:
 ```bash
 # Unix host
-export GMAIL_USR=your_login@gmail.com GMAIL_PWD=your_gmail_password
+export GMAIL_USR=your_login@gmail.com
+export GMAIL_PWD=your_gmail_password
 export FERNET_KEY=$(python -c "from cryptography.fernet import Fernet; FERNET_KEY = Fernet.generate_key().decode(); print(FERNET_KEY)")
 
 # Windows host
-set GMAIL_USR=your_login@gmail.com GMAIL_PWD=your_gmail_password
+set GMAIL_USR=your_login@gmail.com
+set GMAIL_PWD=your_gmail_password
 python -c "import os; from cryptography.fernet import Fernet; FERNET_KEY = Fernet.generate_key().decode(); print(FERNET_KEY);" > tmp.txt
 set /P FERNET_KEY=<tmp.txt
 del tmp.txt
@@ -61,20 +63,20 @@ pytest -v
 - [X] Протестируйте ваши даги (5 баллов) https://airflow.apache.org/docs/apache-airflow/stable/best-practices.html
 - [ ] В docker compose так же настройте поднятие mlflow и запишите туда параметры обучения, метрики и артефакт(модель) (5 доп баллов)
 - [ ] вместо пути в airflow variables  используйте апи Mlflow Model Registry (5 доп баллов)
-- [ ] Настройте alert в случае падения дага (3 доп. балла) https://www.astronomer.io/guides/error-notifications-in-airflow
-- [ ] традиционно, самооценка (1 балл)
+- [X] Настройте alert в случае падения дага (3 доп. балла) https://www.astronomer.io/guides/error-notifications-in-airflow
+- [X] традиционно, самооценка (1 балл)
 
 
 ## Самооценка
 ```
-  0
+  0  За то, что я есть
 + 5  DAG генерации данных
 + 10 DAG пайплайна обучения модели
 + 5  DAG генерации и хранения предсказаний
-+ 3' Есть сенсоры, всё по расписанию
++ 3' Настроил сенсоры, всё по расписанию
 + 10 Всё на докер-операторах
 + 5  Написаны тесты на успешную загрузку DAG-ов и их соответствие ожидаемой структуре
-+ 0' Не настраивал MLFlow
++ 0' Не настраивал MLFlow (как-то очень уж потно, но ещё не вечер)
 + 0' Не взился с Mlflow Model Registry
 + 3' Настроил alert
 + 1  Самооценочка

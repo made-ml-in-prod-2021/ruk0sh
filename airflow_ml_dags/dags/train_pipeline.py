@@ -42,10 +42,9 @@ with DAG(
 
     preprocess_data = DockerOperator(
         image="airflow-preprocess",
-        command=\
-            f"--input-dir={DATA_RAW_DIR} "
-            f"--output-dir={DATA_PROCESSED_DIR} "
-            f"--model-dir={DATA_MODEL_DIR}",
+        command=f"--input-dir={DATA_RAW_DIR} "
+                f"--output-dir={DATA_PROCESSED_DIR} "
+                f"--model-dir={DATA_MODEL_DIR}",
         network_mode="bridge",
         task_id="preprocess-data",
         do_xcom_push=False,
@@ -54,9 +53,8 @@ with DAG(
 
     split_data = DockerOperator(
         image="airflow-split",
-        command= \
-            f"--input-dir={DATA_PROCESSED_DIR} "
-            f"--output-dir={DATA_PROCESSED_DIR}",
+        command=f"--input-dir={DATA_PROCESSED_DIR} "
+                f"--output-dir={DATA_PROCESSED_DIR}",
         network_mode="bridge",
         task_id="split-data",
         do_xcom_push=False,
@@ -65,9 +63,8 @@ with DAG(
 
     train_model = DockerOperator(
         image="airflow-train",
-        command= \
-            f"--input-dir={DATA_PROCESSED_DIR} "
-            f"--output-dir={DATA_MODEL_DIR}",
+        command=f"--input-dir={DATA_PROCESSED_DIR} "
+                f"--output-dir={DATA_MODEL_DIR}",
         network_mode="bridge",
         task_id="train-model",
         do_xcom_push=False,
@@ -76,9 +73,8 @@ with DAG(
 
     validate = DockerOperator(
         image="airflow-validate",
-        command= \
-            f"--data-dir={DATA_PROCESSED_DIR} "
-            f"--model-dir={DATA_MODEL_DIR}",
+        command=f"--data-dir={DATA_PROCESSED_DIR} "
+                f"--model-dir={DATA_MODEL_DIR}",
         network_mode="bridge",
         task_id="validate",
         do_xcom_push=False,

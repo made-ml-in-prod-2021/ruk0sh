@@ -11,7 +11,7 @@ from sklearn.linear_model import LogisticRegression
 @click.option("--output-dir")
 def train_model(input_dir: str, output_dir: str):
     model = LogisticRegression(random_state=42)
-    data = pd.read_csv(os.path.join(input_dir, "train.csv"), index_col = 0)
+    data = pd.read_csv(os.path.join(input_dir, "train.csv"), index_col=0)
     X_train = data.drop("target", axis=1).values
     y_train = data["target"].values
     model.fit(X_train, y_train)
