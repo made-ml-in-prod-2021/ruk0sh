@@ -4,15 +4,17 @@ Maintainer: [Ruslan Akhmerov](https://data.mail.ru/profile/r.akhmerov/)
 Status: In Progress
 
 ## Configure
-Airflow parameters can be found in `dags/constnts.py`
+Airflow parameters can be found in `dags/constants.py`
 
 ## Run Airflow
 From directory with `docker-compose.yml`:
 ```bash
 # Unix host
+export GMAIL_USR=your_login@gmail.com GMAIL_PWD=your_gmail_password
 export FERNET_KEY=$(python -c "from cryptography.fernet import Fernet; FERNET_KEY = Fernet.generate_key().decode(); print(FERNET_KEY)")
 
 # Windows host
+set GMAIL_USR=your_login@gmail.com GMAIL_PWD=your_gmail_password
 python -c "import os; from cryptography.fernet import Fernet; FERNET_KEY = Fernet.generate_key().decode(); print(FERNET_KEY);" > tmp.txt
 set /P FERNET_KEY=<tmp.txt
 del tmp.txt
@@ -64,4 +66,18 @@ pytest -v
 
 
 ## Самооценка
-TODO
+```
+  0
++ 5  DAG генерации данных
++ 10 DAG пайплайна обучения модели
++ 5  DAG генерации и хранения предсказаний
++ 3' Есть сенсоры, всё по расписанию
++ 10 Всё на докер-операторах
++ 5  Написаны тесты на успешную загрузку DAG-ов и их соответствие ожидаемой структуре
++ 0' Не настраивал MLFlow
++ 0' Не взился с Mlflow Model Registry
++ 3' Настроил alert
++ 1  Самооценочка
+-------------------------------------------------------------------------------------
+```
+**ИТОГО: 36 / 36 базовых баллов + 6 / 16 дополнительных =** `42 / 52 баллов`
