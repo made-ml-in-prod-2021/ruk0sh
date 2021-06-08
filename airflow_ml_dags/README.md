@@ -29,6 +29,12 @@ docker volume prune  # yes
 docker network prune  # yes
 ```
 
+## Test DAGs
+Tests will probably crash on Windows host due to: https://stackoverflow.com/questions/52779920/why-is-signal-sigalrm-not-working-in-python-on-windows
+```bash
+pytest -v
+```
+
 ## Project Roadmap
 - [X] Поднимите airflow локально, используя docker compose (можно использовать из примера https://github.com/made-ml-in-prod-2021/airflow-examples/)
 - [X] (5 баллов) Реализуйте dag, который генерирует данные для обучения модели (генерируйте данные, можете использовать как генератор синтетики из первой дз, так и что-то из датасетов sklearn), вам важно проэмулировать ситуации постоянно поступающих данных - записывайте данные в /data/raw/{{ ds }}/data.csv, /data/raw/{{ ds }}/target.csv
@@ -50,7 +56,7 @@ docker network prune  # yes
     По технике, вы можете использовать такую же структуру как в примере, пакую в разные докеры скрипты, можете использовать общий докер с вашим пакетом, но с разными точками входа для разных тасок. 
     Прикольно, если вы покажете, что для разных тасок можно использовать разный набор зависимостей.
     https://github.com/made-ml-in-prod-2021/airflow-examples/blob/main/dags/11_docker.py#L27 в этом месте пробрасывается путь с хостовой машины, используйте здесь путь типа /tmp или считывайте из переменных окружения.
-- [ ] Протестируйте ваши даги (5 баллов) https://airflow.apache.org/docs/apache-airflow/stable/best-practices.html
+- [X] Протестируйте ваши даги (5 баллов) https://airflow.apache.org/docs/apache-airflow/stable/best-practices.html
 - [ ] В docker compose так же настройте поднятие mlflow и запишите туда параметры обучения, метрики и артефакт(модель) (5 доп баллов)
 - [ ] вместо пути в airflow variables  используйте апи Mlflow Model Registry (5 доп баллов)
 - [ ] Настройте alert в случае падения дага (3 доп. балла) https://www.astronomer.io/guides/error-notifications-in-airflow
