@@ -2,16 +2,16 @@
 
 - [X] Установите kubectl
 
-- [ ] Разверните kubernetes  
+- [X] Разверните kubernetes  
     Вы можете развернуть его в облаке:
     - [ ] https://cloud.google.com/kubernetes-engine
     - [ ] https://mcs.mail.ru/containers/
-    - [ ] https://cloud.yandex.ru/services/managed-kubernetes
+    - [X] https://cloud.yandex.ru/services/managed-kubernetes
     Либо воспользоваться локальной инсталляцией
     - [ ] https://kind.sigs.k8s.io/docs/user/quick-start/
     - [ ] https://minikube.sigs.k8s.io/docs/start/
-    Напишите, какой способ вы избрали. 
-    - [ ] Убедитесь, с кластер поднялся (kubectl cluster-info) 
+    Напишите, какой способ вы избрали.
+- [X] Убедитесь, с кластер поднялся (kubectl cluster-info) 
 (5 баллов)
 
 - [ ] Напишите простой pod manifests для вашего приложения, назовите его online-inference-pod.yaml (https://kubernetes.io/docs/concepts/workloads/pods/)
