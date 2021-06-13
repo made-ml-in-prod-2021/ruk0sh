@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: online-inference
+  labels:
+    name: online-inference
+spec:
+  replicas: 3
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  selector:
+    matchLabels:
+      name: online-inference
+  template:
+    metadata:
+      labels:
+        name: online-inference
+    spec:
+      containers:
+        - name: ml-service
+          image: ruk0sh/online_inference:v1
+          ports:
+            - name: api
+              containerPort: 8000
+              protocol: TCP
+          resources:
+            requests:
+              memory: "128 Mi"
+              cpu: "250m"
+            limits:
+              memory: "256 Mi"
+              cpu: "500m"
