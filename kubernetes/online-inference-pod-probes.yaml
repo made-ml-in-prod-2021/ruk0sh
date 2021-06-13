@@ -19,13 +19,13 @@ spec:
           cpu: "500m"
       livenessProbe:
         httpGet:
-          path: /live_check
+          path: /health
           port: 8000
         initialDelaySeconds: 10
         periodSeconds: 10
       readinessProbe:
         httpGet:
-          path: /ready_check
+          path: /health
           port: 8000
         initialDelaySeconds: 10
         periodSeconds: 10
