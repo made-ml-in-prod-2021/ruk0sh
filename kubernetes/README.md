@@ -1,3 +1,8 @@
+# Machine Learning in Production Course: Homework 3
+Maintainer: [Ruslan Akhmerov](https://data.mail.ru/profile/r.akhmerov/)
+
+Status: in progress
+
 ## Project Roadmap
 
 - [X] Установите kubectl
@@ -14,13 +19,13 @@
 - [X] Убедитесь, с кластер поднялся (kubectl cluster-info) 
 (5 баллов)
 
-- [ ] Напишите простой pod manifests для вашего приложения, назовите его online-inference-pod.yaml (https://kubernetes.io/docs/concepts/workloads/pods/)
-    - [ ] Задеплойте приложение в кластер (kubectl apply -f online-inference-pod.yaml), убедитесь, что все поднялось (kubectl get pods)
-    - [ ] Приложите скриншот, где видно, что все поднялось
+- [X] Напишите простой pod manifests для вашего приложения, назовите его online-inference-pod.yaml (https://kubernetes.io/docs/concepts/workloads/pods/)
+    - [X] Задеплойте приложение в кластер (kubectl apply -f online-inference-pod.yaml), убедитесь, что все поднялось (kubectl get pods)
+    - [X] Приложите скриншот, где видно, что все поднялось
 (4 балла)
 
-- [ ] Пропишите requests/limits и напишите зачем это нужно в описание PR
-    - [ ] закоммитьте файл online-inference-pod-resources.yaml
+- [X] Пропишите requests/limits и напишите зачем это нужно в описание PR
+    - [X] закоммитьте файл online-inference-pod-resources.yaml
 (2 балла)
 
 - [ ] Модифицируйте свое приложение так, чтобы оно стартовало не сразу(с задержкой секунд 20-30) и падало спустя минуты работы. 
@@ -50,4 +55,15 @@
 
 
 ## Самооценка
-TODO
+```
++ 0  За то, что я есть
++ 5  Поднял кластер и он поднялся. Триал GCP у меня уже исчерпан, потому Yandex.Cloud
++ 4  Написал простой манифест, всё завелось
++ 0  Не прописывал requests/limits
++ 0  Не возился с liveness/readyness пробами
++ 0  Не делал replicaset
++ 0  Не описывал деплоймент
++ 0' Не имел дел с Helm
+-------------------------------------------------------------------------------------
+```
+**ИТОГО: 9 / 20 базовых баллов + 0 / 5 дополнительных =** `9 / 25 баллов`
