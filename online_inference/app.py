@@ -1,5 +1,6 @@
 import logging
 import os
+import time
 from typing import List, Optional, Union
 
 import pandas as pd
@@ -26,6 +27,7 @@ from homework1.models.fit_predict import (
 logger = logging.getLogger(__name__)
 app = FastAPI()
 model: Optional[ValidModelClass] = None
+start_time = time.time()
 
 
 def make_predict(
@@ -54,12 +56,16 @@ def main():
 # the Google Cloud Platform due to internal naming convention.
 @app.get("/health")
 def health() -> bool:
+    global start_time
+    if time.time() - start_time >= 180:
+        return False
     return not (model is None)
 
 
 @app.on_event("startup")
 def preload_model():
     global model
+    time.sleep(20)
     model_path = os.getenv("PATH_TO_MODEL", PATH_TO_MODEL)
     logger.info(f"Loading model from {model_path}")
     if model_path is None:
