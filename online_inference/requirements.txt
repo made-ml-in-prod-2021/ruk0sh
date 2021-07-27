@@ -2,6 +2,6 @@ pandas==1.1.5
 requests==2.25.1
 click==7.1.2
 numpy==1.19.5
-fastapi==0.65.1
+fastapi>=0.65.2
 pydantic==1.8.2
 uvicorn==0.13.4
